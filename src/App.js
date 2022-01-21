@@ -4,92 +4,171 @@ import './App.css';
 class App extends React.Component {
 
    state = {
-      produto: [ 
+      produtos: [
          {
             id: Date.now(),
-            name: "Foguete da Missão Apollo 11",
+            name: "Foguete Apollo 11",
             value: 400.0,
             imageUrl: "https://picsum.photos/200/200",
          },
          {
             id: Date.now(),
-            name: "Foguete da Missão Apollo 11",
-            value: 10000.0,
-            imageUrl: "https://picsum.photos/200/200",
+            name: "Foguete da Missão Apollo 1",
+            value: 100.0,
+            imageUrl: "https://picsum.photos/200/200?a=8",
          },
+         {
+            id: Date.now(),
+            name: "Foguete joaozinho 9",
+            value: 10.0,
+            imageUrl: "https://picsum.photos/200/200?a=7",
+         },
+         {
+            id: Date.now(),
+            name: "Foguete bolinha 11",
+            value: 20.0,
+            imageUrl: "https://picsum.photos/200/200?a=4",
+         },
+         {
+            id: Date.now(),
+            name: "Foguete smalatak 11",
+            value: 2000.0,
+            imageUrl: "https://picsum.photos/200/200?a=5",
+         },
+         {
+            id: Date.now(),
+            name: "Foguete abdubadala quinto",
+            value: 200.0,
+            imageUrl: "https://picsum.photos/200/200?a=6",
+         },
+         {
+            id: Date.now(),
+            name: "Foguete ronaldinho 44",
+            value: 1.0,
+            imageUrl: "https://picsum.photos/200/200?a=3",
+         },
+         {
+            id: Date.now(),
+            name: "Foguete mars ultimate 11",
+            value: 8000.0,
+            imageUrl: "https://picsum.photos/200/200?a=2",
+         },
+
 
       ],
 
-      valorInput: ""
+      valorInput: "",
+
+
+      carrinho: [
+         {
+            /* 
+            name: "",
+            value: Number,
+            quantidade: Number */
+         },
+      ]
    }
+
+
+   adicionarProduto = () => {
+      //LOGICA DO CARRINHO ENTRA AQUI 
+
+      console.log("Adicionou no carrinho !")
+
+      const produtoCarrinho = {
+
+         name: "",
+         value: Number,
+         quantidade: Number
+
+      }
+
+
+      this.setState({ carrinho: produtoCarrinho })
+
+   }
+
+
 
 
 
    render() {
+      const Produto = this.state.produtos.map((produto, x) => {
+
+         return (
+            
+               <div key={x} className='cardsProdutos'>
+                  <img className='CardImagem' src={produto.imageUrl} alt='Imagem bonita'></img>
+                  <a className='CardNome' href="/#">{produto.name}</a>
+                  <a className='CardValor'/><a className='NomeValor'>Valor R$ {produto.value}</a> 
+                  <button className='BotaoProduto' >Adicionar no carrinho</button>
+               </div>
+            
+         );
+      });
+/* 
+      const Carrinho = this.state.carrinho.map((produto) => {
+
+         return (
+
+            <>
 
 
+            </>
 
+         )
 
-
-
-
+      })
+ */
       return (
          <div className="App">
 
 
-
-
             <header className='Topo'>
-            
 
-               <div className='QuantidadeProdutos'>Quantidade de produtos</div>
+               <div className='QuantidadeProdutos'>Quantidade de produtos
+
+                  <div></div>
+               </div>
                <div className='SeletorOrdenario'>Seletor
-               
-               <select className='Seletor'>
-               <option>Nenhum</option>
-               <option>Crescente</option>
-               <option>Decrescente</option>
-               </select>
-               
+
+                  <select className='Seletor'>
+                     <option value='valor0'>Nenhum</option>
+                     <option value='valor1'>Crescente</option>
+                     <option value='valor2'>Decrescente</option>
+                  </select>
+
                </div>
             </header>
 
-
-
             <main className="App-header">
 
+               <div className="FiltroDiv" >Filtro<br />
 
+                  <input placeholder='Entrada' type="number"></input>
+                  <input placeholder='Entrada' type="number"></input>
+                  <input placeholder='Entrada' type="text"></input>
 
-            
+               </div>
+               <div className='ProdutosDiv'>
 
-             <div className="FiltroDiv" >Filtro<br/>
+                  {Produto}
 
+               </div>
 
+               <div className='CarrinhoDiv'>Carrinho
+                  <div className='ItemNoCarrinho'>
+                     <button className='BotaoRemover' >Remover</button>
+                  </div>
 
-             <input placeholder='Entrada' type="number"></input>
-             <input placeholder='Entrada' type="number"></input>
-             <input placeholder='Entrada' type="text"></input>
+                  {''}
 
-
-
-             </div>
-             <div className='ProdutosDiv'>Produtos
-             
-             
-             
-             </div>
-             
-             <div className='CarrinhoDiv'>Carrinho
-             
-             
-             
-             </div>
+               </div>
             </main>
          </div>
       );
-
    }
-
 }
 
 export default App;
