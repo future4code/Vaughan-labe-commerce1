@@ -62,41 +62,65 @@ class App extends React.Component {
 
       carrinho: [
          {
+            /* 
             name: "",
             value: Number,
-            quantidade: Number
-         }
+            quantidade: Number */
+         },
       ]
    }
 
 
    adicionarProduto = () => {
-
+      //LOGICA DO CARRINHO ENTRA AQUI 
 
       console.log("Adicionou no carrinho !")
-      //LOGICA DO CARRINHO ENTRA AQUI 
+
+      const produtoCarrinho = {
+
+         name: "",
+         value: Number,
+         quantidade: Number
+
+      }
+
+
+      this.setState({ carrinho: produtoCarrinho })
 
    }
 
-   
+
 
 
 
    render() {
-      const Produto = this.state.produtos.map((produto) => {
+      const Produto = this.state.produtos.map((produto, x) => {
 
          return (
-            <>
-               <div className='cardsProdutos'>
-                  <img className='CardImagem' src={produto.imageUrl}></img>
-                  <a className='CardNome'>{produto.name}</a>
-                  <a className='CardValor'><a className='NomeValor'>Valor R$</a> {produto.value}</a>
-                  <button className='BotaoProduto' onClick={this.adicionarProduto}>Adicionar no carrinho</button>
+            
+               <div key={x} className='cardsProdutos'>
+                  <img className='CardImagem' src={produto.imageUrl} alt='Imagem bonita'></img>
+                  <a className='CardNome' href="/#">{produto.name}</a>
+                  <a className='CardValor'/><a className='NomeValor'>Valor R$ {produto.value}</a> 
+                  <button className='BotaoProduto' >Adicionar no carrinho</button>
                </div>
-            </>
+            
          );
       });
+/* 
+      const Carrinho = this.state.carrinho.map((produto) => {
 
+         return (
+
+            <>
+
+
+            </>
+
+         )
+
+      })
+ */
       return (
          <div className="App">
 
@@ -134,7 +158,10 @@ class App extends React.Component {
                </div>
 
                <div className='CarrinhoDiv'>Carrinho
-                  <button onClick={'this.mostrarProdutos()'}>Botao</button>
+                  <div className='ItemNoCarrinho'>
+                     <button className='BotaoRemover' >Remover</button>
+                  </div>
+
                   {''}
 
                </div>

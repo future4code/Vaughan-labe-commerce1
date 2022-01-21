@@ -46,8 +46,13 @@
    background-color: rgb(107, 109, 110);
    width: 20vw;
    height: 60vh;
-   margin: 10px;
+   margin: 5px;
+   display: flex;
+   flex-direction: column;
+   align-items: center
 }
+
+
 
 .Opcoes {
    width: 2vw;
@@ -90,4 +95,21 @@
 
 .cardsProdutos a {
    font-size: 1.2vw;
+}
+
+.ItemNoCarrinho {
+   width: 95%;
+   height: 10%;
+   background-color: whitesmoke;
+
+}
+
+.BotaoRemover {
+   width: 30%;
+   height: 60%;
+   font-size: 37%;
+}
+
+.BotaoRemover:active {
+   background-color: brown;
 }
