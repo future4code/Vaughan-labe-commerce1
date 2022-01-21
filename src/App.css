@@ -49,18 +49,45 @@
    margin: 10px;
 }
 
-
-.ProdutosDiv {
-   background-color: rgb(107, 109, 110);
-   width: 50vw;
-   height: 97vh;
-   margin: 10px;
-   display: flex;
-   padding: 10px;
-}
-
 .Opcoes {
    width: 2vw;
    height: 5vh;
    margin: 20px 0px;
+}
+
+.ProdutosDiv {
+   background-color: rgb(107, 109, 110);
+   width: 50%;
+   height: 100%;
+   margin: 2%;
+   padding: 2%;
+   display:grid;
+   grid-template-columns: repeat(3, 1fr);
+}
+
+
+
+.cardsProdutos {
+   background-color: rgb(68, 65, 65);
+   width: 95%;
+   height: 60vh;
+   margin: 2px;
+   display: flex;
+   flex-direction: column;
+   align-items: center
+}
+
+.CardImagem {
+   width: 100%;
+   height: 70%;
+}
+
+.BotaoProduto {
+   width: 80%;
+   height: 5%;
+
+}
+
+.cardsProdutos a {
+   font-size: 1.2vw;
 }
