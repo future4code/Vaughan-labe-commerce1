@@ -104,12 +104,7 @@
 
 }
 
-.BotaoRemover {
-   width: 30%;
-   height: 60%;
-   font-size: 37%;
-}
-
-.BotaoRemover:active {
-   background-color: brown;
+.ProdutoNoCarrinho {
+   background-color: rgb(42, 50, 58);
+     
 }
