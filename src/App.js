@@ -1,4 +1,5 @@
 import React from 'react';
+import { Filters } from "./componentes/Filters";
 import './App.css';
 
 
@@ -64,7 +65,13 @@ class App extends React.Component {
 
       carrinho: [
 
-      ]
+      ],
+
+      search: "",
+    maxPrice: "",
+    minPrice: "",
+    orderningParamenter: "title",
+    order: 1,
    }
 
 
@@ -128,7 +135,17 @@ class App extends React.Component {
 
 
 
-
+   updateSearch = (e) => {
+      this.setState({ search: e.target.value });
+    };
+  
+    updateMaxPrice = (e) => {
+      this.setState({ maxPrice: e.target.value });
+    };
+  
+    updateaMinPrice = (e) => {
+      this.setState({ minPrice: e.target.value });
+    };
 
 
    render() {
@@ -147,7 +164,14 @@ class App extends React.Component {
          )
       });
 
-      const Produto = this.state.produtos.map((produto) => {
+      const Produto = this.state.produtos
+      .filter(produto => {
+         return produto.name.toLowerCase().includes(this.state.search.toLowerCase())
+      }).filter(produto => {
+         return this.state.minPrice === "" || produto.value >= this.state.minPrice
+      }).filter(produto => {
+         return this.state.maxPrice === "" || produto.value <= this.state.maxPrice
+      }).map((produto) => {
 
          return (
 
@@ -186,9 +210,14 @@ class App extends React.Component {
 
                <div className="FiltroDiv" >Filtro<br />
 
-                  <input placeholder='Entrada' type="number"></input>
-                  <input placeholder='Entrada' type="number"></input>
-                  <input placeholder='Entrada' type="text"></input>
+               <Filters
+              minPrice={this.state.minPrice}
+              maxPrice={this.state.maxPrice}
+              search={this.state.search}
+              updateaMinPrice={this.updateaMinPrice}
+              updateMaxPrice={this.updateMaxPrice}
+              updateSearch={this.updateSearch}
+            />
 
                </div>
                <div className='ProdutosDiv'>
